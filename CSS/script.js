@@ -74,5 +74,29 @@ let answersDisabled = false
 totalQuestionsSpan.textContent = quizQuestions.length;
 maxScoreSpan.textContent = quizQuestions.length;
 
+// EVENT LISTENERS
 
+startButton.addEventListener("click", startQuiz);
+restartButton.addEventListener("click",  restartQuize);
 
+function startQuiz(){
+  // resets Variables
+  currentQuestionIndex = 0;
+  scoreSpan.textContent = 0;
+  startScreen.classList.remove("active");
+  quizScreen.classList.add("active");
+}
+
+function showQuestion(){
+  // resets state
+  answersDisabled = false;
+  
+  const currentQuestion = quizQuestions[currentQuestionIndex] ;
+  currentQuestionSpan.textContent = currentQuestionIndex + 1;
+
+  const progressPercent = (currentQuestionIndex / quizQuestions.length) * 100;
+  progressBar.style.width = progressPercent + "%"
+
+  questionText.textContent = currentQuestion.question ;
+  
+}
